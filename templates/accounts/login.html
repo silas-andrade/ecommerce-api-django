@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Entrar{% endblock %}
+
+{% block content %}
+<div class="container mt-5" style="max-width:420px;">
+  <h2 class="mb-4 text-center">Entrar</h2>
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger mb-3">{{ form.non_field_errors }}</div>
+    {% endif %}
+
+    <div class="mb-3">
+      {{ form.username.label_tag }}
+      {{ form.username }}
+      {% if form.username.errors %}
+        <div class="text-danger small mt-1">{{ form.username.errors }}</div>
+      {% endif %}
+    </div>
+
+    <div class="mb-3">
+      {{ form.password.label_tag }}
+      {{ form.password }}
+      {% if form.password.errors %}
+        <div class="text-danger small mt-1">{{ form.password.errors }}</div>
+      {% endif %}
+    </div>
+
+    {% if form.remember %}
+      <div class="mb-3 form-check">
+        {{ form.remember }}
+        {{ form.remember.label_tag }}
+      </div>
+    {% endif %}
+
+    <button type="submit" class="btn btn-primary w-100">Entrar</button>
+  </form>
+
+  <p class="text-center mt-3 small">
+    Não tem conta? <a href="{% url 'signup' %}">Cadastre-se</a> ·
+    <a href="{% url 'password_reset' %}">Esqueci a senha</a>
+  </p>
+</div>
+{% endblock %}
