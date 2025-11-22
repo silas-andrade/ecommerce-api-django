@@ -12,13 +12,12 @@ class User(AbstractUser):
     created_at = models.DateTimeField(auto_now_add=True)
 
 
-# TODO Adicionar mais modelos relacionados a contas, como Perfil de Vendedor e Perfil de Comprador.
-
+# TODO Ampliar esse modelo para clientes
 class CustomUser(User):
     address = ...
     orders = ...
 
-
+# TODO Melhorar esse modelo para vendedores
 class SellerUser(User):
     name = models.CharField(max_length=25)
     products = ...
