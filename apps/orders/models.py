@@ -3,7 +3,7 @@ from django.db.models import *
 
 import uuid
 
-from accounts.models import CustomUser 
+from apps.users.models import CustomUser 
 
 # TODO Adicionar modelos relacionados a pedidos, como Pedido, Item do Pedido, e Status do Pedido, e relaciona-los com o modelo de Usuário.
 
@@ -18,7 +18,7 @@ class Order(models.Model):
     ]
     
     user = ForeignKey(CustomUser, on_delete=DO_NOTHING, editable=False)
-    order_number = UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    order_id = UUIDField(default=uuid.uuid4, editable=False, unique=True)
     status = CharField(max_length=2, choices=STATUS_CHOICES, default='P')
     total_amount = DecimalField(max_digits=10, decimal_places=2)
     shipping_cost = DecimalField(max_digits=10, decimal_places=2, default=0)
@@ -26,7 +26,7 @@ class Order(models.Model):
     update_at = DateTimeField(auto_now=True)
 
     def __str__(self):
-        return str(self.order_number)
+        return f"{str(self.order_id)}"
 
 
 

@@ -14,6 +14,7 @@ class UserCreateForm(UserCreationForm):
             'password1',
             'password2',
         ]
+        
         labels = {
             'fullname': _("Full name"),
             'phone_number': _("Phone Number"),
