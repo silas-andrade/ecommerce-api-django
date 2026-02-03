@@ -3,7 +3,7 @@ from django.db.models import *
 
 import uuid
 
-from apps.users.models import CustomUser 
+from apps.users.models import Customer 
 
 # TODO Adicionar modelos relacionados a pedidos, como Pedido, Item do Pedido, e Status do Pedido, e relaciona-los com o modelo de Usuário.
 
@@ -17,7 +17,7 @@ class Order(models.Model):
         ('C', 'Canceled'),
     ]
     
-    user = ForeignKey(CustomUser, on_delete=DO_NOTHING, editable=False)
+    user = ForeignKey(Customer, on_delete=DO_NOTHING, editable=False)
     order_id = UUIDField(default=uuid.uuid4, editable=False, unique=True)
     status = CharField(max_length=2, choices=STATUS_CHOICES, default='P')
     total_amount = DecimalField(max_digits=10, decimal_places=2)

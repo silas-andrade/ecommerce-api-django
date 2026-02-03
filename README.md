@@ -14,11 +14,11 @@
 
 ### 🔐 Autenticação & Usuários
 
-- [ ] Implementar **User model customizado** (UUID, campos essenciais, sem vazamento de PII)
+- [X] Implementar **User model customizado** (UUID, campos essenciais, sem vazamento de PII)
 - [ ] Integrar **JWT Authentication** (SimpleJWT)
-  - [ ] Login (access/refresh)
-  - [ ] Refresh token
-  - [ ] Logout (blacklist)
+  - [X] Login (access/refresh)
+  - [X] Refresh token
+  - [X] Logout (blacklist)
 - [ ] Endpoint de **registro de usuário**
 - [ ] Endpoint para **perfil do usuário autenticado**
 - [ ] (Opcional) Verificação de e-mail
