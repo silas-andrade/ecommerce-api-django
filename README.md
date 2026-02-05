@@ -27,10 +27,10 @@
 
 ### 🏪 Perfis (Customer / Seller)
 
-- [ ] Criar modelo **Customer** (OneToOne com User)
+- [X] Criar modelo **Customer** (OneToOne com User)
 - [ ] Criar modelo **Seller**
-  - [ ] Nome da loja
-  - [ ] Descrição / links
+  - [X] Nome da loja
+  - [X] Descrição / links
 - [ ] Permissões customizadas (seller-only actions)
 - [ ] Endpoints para gerenciamento de perfil
 

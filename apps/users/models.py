@@ -28,8 +28,9 @@ class Seller(models.Model):
         on_delete=models.CASCADE,
         related_name='seller_profile'
     )
+    #photo = models.ImageField()
     store_name = models.CharField(max_length=100)
-    links = models.TextField(blank=True)
+    description = models.TextField(blank=True)
 
     def __str__(self):
         return f"Seller: {self.store_name}"
