@@ -1,6 +1,13 @@
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser
 from django.db import models
+
 import uuid
+
+from .storage import (
+    customer_profile_image_path,
+    seller_profile_image_path,
+    seller_cover_image_path
+)
 
 
 class User(AbstractUser):
@@ -14,8 +21,9 @@ class Customer(models.Model):
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
-        related_name='customer_profile'
+        related_name='customer'
     )
+    profile_image  = models.ImageField(upload_to=customer_profile_image_path)
     address = models.TextField(blank=True)
 
     def __str__(self):
@@ -26,9 +34,14 @@ class Seller(models.Model):
     user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
-        related_name='seller_profile'
+        related_name='seller'
     )
-    #photo = models.ImageField()
+    profile_image  = models.ImageField(upload_to=seller_profile_image_path)
+    cover_image = models.ImageField(
+        upload_to=seller_cover_image_path,
+        null=True,
+        blank=True
+    )
     store_name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
 
@@ -37,9 +50,9 @@ class Seller(models.Model):
 
 
 """
-if hasattr(user, 'seller_profile'):
+if hasattr(user, 'seller'):
     # é seller
 
-if hasattr(user, 'customer_profile'):
+if hasattr(user, 'customer'):
     # é customer
 """

@@ -15,6 +15,7 @@ This project is an e-commerce API developed with Django and Django REST Framewor
 
 ---
 
+
 ## 📝 License
 
 This project is licensed. See the [LICENSE](LICENSE) file for more details.

@@ -3,7 +3,7 @@
 ### 🔐 Autenticação & Usuários
 
 - [X] Implementar **User model customizado** (UUID, campos essenciais, sem vazamento de PII)
-- [ ] Integrar **JWT Authentication** (SimpleJWT)
+- [X] Integrar **JWT Authentication** (SimpleJWT)
   - [X] Login (access/refresh)
   - [X] Refresh token
   - [X] Logout (blacklist)
@@ -16,7 +16,7 @@
 ### 🏪 Perfis (Customer / Seller)
 
 - [X] Criar modelo **Customer** (OneToOne com User)
-- [ ] Criar modelo **Seller**
+- [X] Criar modelo **Seller**
   - [X] Nome da loja
   - [X] Descrição / links
 - [ ] Permissões customizadas (seller-only actions)
