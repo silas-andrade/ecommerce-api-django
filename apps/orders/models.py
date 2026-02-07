@@ -17,8 +17,8 @@ class Order(models.Model):
         ('C', 'Canceled'),
     ]
     
-    user = ForeignKey(Customer, on_delete=DO_NOTHING, editable=False)
-    order_id = UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
+    customer = ForeignKey(Customer, on_delete=DO_NOTHING, editable=False)
     status = CharField(max_length=2, choices=STATUS_CHOICES, default='P')
     total_amount = DecimalField(max_digits=10, decimal_places=2)
     shipping_cost = DecimalField(max_digits=10, decimal_places=2, default=0)
@@ -26,7 +26,7 @@ class Order(models.Model):
     update_at = DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{str(self.order_id)}"
+        return f"{str(self.id)}"
 
 
 
