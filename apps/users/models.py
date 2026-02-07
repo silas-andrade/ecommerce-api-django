@@ -6,6 +6,7 @@ import uuid
 from .storage import (
     customer_profile_image_path,
 )
+from core import settings
 
 
 class User(AbstractUser):
@@ -17,7 +18,7 @@ class User(AbstractUser):
 
 class Customer(models.Model):
     user = models.OneToOneField(
-        User,
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='customer'
     )
