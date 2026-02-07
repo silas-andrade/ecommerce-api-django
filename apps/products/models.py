@@ -1,9 +1,10 @@
 import uuid
-from pathlib import Path
 
 from django.db import models
 
-from apps.users.models import Seller
+
+from apps.sellers.models import Seller
+from .storage import product_image_path
 
 
 class Product(models.Model):
@@ -14,15 +15,11 @@ class Product(models.Model):
         editable=False, 
         on_delete=models.CASCADE
         )
+    
     name = models.CharField(max_length=255)
     price = models.DecimalField(decimal_places=2, max_digits=10)
 
     
-def product_image_path(instance, filename):
-    ext = Path(filename).suffix  # ".jpg", ".png"
-    new_filename = f"{uuid.uuid4()}{ext}"
-    return f"products/images/{instance.product.id}/{new_filename}"
-
 
 class ProductImage(models.Model):
     id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
