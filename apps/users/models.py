@@ -3,9 +3,8 @@ from django.db import models
 
 import uuid
 
-from .storage import (
-    customer_profile_image_path,
-)
+from .storage import customer_profile_image_path
+
 from core import settings
 
 

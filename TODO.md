@@ -26,14 +26,14 @@
 
 ### 📦 Produtos
 
-- [ ] Criar modelo **Product**
-  - [ ] Nome
-  - [ ] Descrição
-  - [ ] Preço
-  - [ ] Moeda
-  - [ ] Estoque
-  - [ ] Seller (FK)
-- [ ] Upload de imagens (MEDIA)
+- [X] Criar modelo **Product**
+  - [X] Nome
+  - [X] Descrição
+  - [X] Preço
+  - [X] Moeda
+  - [X] Estoque
+  - [X] Seller (FK)
+- [x] Upload de imagens (MEDIA)
 - [ ] CRUD de produtos (DRF)
 - [ ] Permitir criação/edição apenas por sellers
 - [ ] Endpoint público de listagem e detalhe
@@ -42,8 +42,8 @@
 
 ### 🛒 Carrinho de Compras
 
-- [ ] Criar modelo **Cart**
-- [ ] Criar modelo **CartItem**
+- [X] Criar modelo **Cart**
+- [X] Criar modelo **CartItem**
 - [ ] Endpoints:
   - [ ] Adicionar item
   - [ ] Remover item
@@ -55,8 +55,8 @@
 
 ### 🧾 Pedidos (Orders)
 
-- [ ] Criar modelo **Order**
-- [ ] Criar modelo **OrderItem**
+- [X] Criar modelo **Order**
+- [X] Criar modelo **OrderItem**
 - [ ] Status do pedido (enum)
 - [ ] Criar pedido a partir do carrinho
 - [ ] Endpoints:
