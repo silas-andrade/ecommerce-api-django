@@ -11,9 +11,6 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-MAX_REVIEW_IMAGE_SIZE  = 5 * 1024 * 1024
-MAX_REVIEW_VIDEO_SIZE  = 30 * 1024 * 1024
-
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -37,14 +34,15 @@ LOCAL_APPS = [
     'apps.users',
     'apps.sellers',
 
-    'apps.reviews',
+    'apps.support',
+    'apps.moderation',
+
     'apps.products',
     'apps.orders',
-
     'apps.cart',
-    
+    'apps.reviews',
+
     'apps.payments',
-    
     'apps.shipping',
 ]
 
