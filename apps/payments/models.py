@@ -3,7 +3,7 @@ from django.db import models
 import uuid
 
 from .choices import PaymentStatus
-from apps.orders import Order
+from apps.orders.models import Order
 
 
 class Payment(models.Model):

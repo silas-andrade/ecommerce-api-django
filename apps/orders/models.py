@@ -6,7 +6,6 @@ from .choices import OrderStatus
 from core import settings
 from apps.products.models import Product
 
-# TODO Adicionar modelos relacionados a pedidos, como Pedido, Item do Pedido, e Status do Pedido, e relaciona-los com o modelo de Usuário.
 
 class Order(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
