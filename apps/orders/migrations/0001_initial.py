@@ -13,18 +13,24 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Cart',
+            name='Order',
             fields=[
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
+                ('status', models.CharField(choices=[('pending', 'Pending'), ('paid', 'Paid'), ('canceled', 'Canceled'), ('shipped', 'Shipped'), ('delivered', 'Delivered')], default='pending', max_length=20)),
+                ('total_amount', models.DecimalField(decimal_places=2, max_digits=10)),
+                ('shipping_cost', models.DecimalField(decimal_places=2, default=0, max_digits=10)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
             ],
         ),
         migrations.CreateModel(
-            name='CartItem',
+            name='OrderItem',
             fields=[
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
+                ('price', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('quantity', models.PositiveIntegerField(default=1)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
             ],
         ),
     ]
