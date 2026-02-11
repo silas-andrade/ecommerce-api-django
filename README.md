@@ -1,9 +1,5 @@
 # ecommerce-api-django
 
-![GitHub repo size](https://img.shields.io/github/repo-size/silas-andrade/ecommerce-django?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/silas-andrade/ecommerce-django?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/silas-andrade/ecommerce-django?style=for-the-badge)
-
 <!-- 
 <img src="static/img/exemplo_pagina_inicial.png" alt="Exemplo imagem">
 -->
