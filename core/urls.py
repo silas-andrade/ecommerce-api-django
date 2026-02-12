@@ -17,10 +17,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 urlpatterns = [
+    # Django
     path('admin/', admin.site.urls),
+
+    # Django Rest Framework (DRF)
     path('api-auth/', include('rest_framework.urls')),
+
+    # drf_spectacular
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema")),
+
+    # Apps
     path("api/users/", include("apps.users.urls")),
     path('api/', include('apps.products.urls')),
 ]
