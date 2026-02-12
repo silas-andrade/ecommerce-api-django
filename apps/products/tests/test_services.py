@@ -1,6 +1,3 @@
-from django.test import TestCase
-from django.contrib.auth import get_user_model
-
 import pytest
 
 
@@ -74,6 +71,4 @@ def test_remove_product_media():
     with pytest.raises(DomainError) as exc:
         remove_product_media(product_media2)
     
-    assert product.media.count() >= 1
-
-        
+    assert product.media.count() >= 1     
