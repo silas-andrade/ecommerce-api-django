@@ -4,12 +4,12 @@ import uuid
 
 from .choices import OrderStatus
 from core import settings
+from core.models import UUIDModel, TimeStampedModel
 from apps.products.models import Product
 
 
-class Order(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
+class Order(UUIDModel, TimeStampedModel):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name="orders",
@@ -33,15 +33,11 @@ class Order(models.Model):
         default=0
     )
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
     def __str__(self):
         return f"Order {self.id}"
 
 
-class OrderItem(models.Model):
-    id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
+class OrderItem(UUIDModel, TimeStampedModel):
     order = models.ForeignKey(
         Order,
         related_name="items",
@@ -56,5 +52,3 @@ class OrderItem(models.Model):
         decimal_places=2
     )
     quantity = models.PositiveIntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)

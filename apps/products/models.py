@@ -7,10 +7,9 @@ from apps.sellers.models import Seller
 from .storage import product_media_path
 from .choices import ProductStatus
 
+from core.models import UUIDModel, TimeStampedModel
 
-class Product(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-
+class Product(UUIDModel, TimeStampedModel):
     seller = models.ForeignKey(
         Seller,
         related_name="products",
@@ -40,12 +39,8 @@ class Product(models.Model):
     slug = models.SlugField(unique=True)
     is_active = models.BooleanField(default=True)
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
-
-class ProductMedia(models.Model):
-    id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
+class ProductMedia(UUIDModel, TimeStampedModel):
     product = models.ForeignKey(
         Product,
         related_name="media", 
@@ -66,4 +61,3 @@ class ProductMedia(models.Model):
             ]
         )
     order = models.PositiveIntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)

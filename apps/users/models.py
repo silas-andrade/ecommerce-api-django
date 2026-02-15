@@ -4,22 +4,20 @@ from django.db import models
 import uuid
 
 from .storage import customer_profile_image_path
-
+from core.models import UUIDModel, TimeStampedModel
 from core import settings
 
 
-class User(AbstractBaseUser, PermissionsMixin):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+class User(AbstractBaseUser, PermissionsMixin, UUIDModel, TimeStampedModel):
     #username = models.UUIDField(default=uuid.uuid4, editable=False)
     email = models.EmailField(unique=True)
     full_name = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=10, unique=True)
-    created_at = models.DateTimeField(auto_now_add=True)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
 
 
-class Customer(models.Model):
+class Customer(UUIDModel, TimeStampedModel):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,

@@ -4,11 +4,11 @@ import uuid
 
 from .storage import review_media_path
 from core import settings
+from core.models import UUIDModel, TimeStampedModel
 from apps.products.models import Product
 
 
-class Review(models.Model):
-    id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
+class Review(UUIDModel, TimeStampedModel):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
         related_name="reviews",
         on_delete=models.CASCADE
@@ -20,11 +20,8 @@ class Review(models.Model):
         )
     text = models.TextField()
 
-    created_at = models.DateTimeField(auto_now_add=True)
 
-
-class ReviewMedia(models.Model):
-    id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
+class ReviewMedia(UUIDModel, TimeStampedModel):
     review = models.ForeignKey(
         Review, 
         related_name="media", 
@@ -44,11 +41,8 @@ class ReviewMedia(models.Model):
         )
     
     order = models.PositiveIntegerField(default=0)
-    created_at = models.DateTimeField(auto_now_add=True)
 
-
-class ReviewReaction(models.Model):
-    id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
+class ReviewReaction(UUIDModel, TimeStampedModel):
     review = models.ForeignKey(
         Review,
         related_name="reactions",
@@ -62,9 +56,6 @@ class ReviewReaction(models.Model):
         )
     
     is_helpful = models.BooleanField()
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         constraints = [

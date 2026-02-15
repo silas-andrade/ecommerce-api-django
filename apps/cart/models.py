@@ -5,20 +5,17 @@ import uuid
 from apps.products.models import Product
 from core import settings
 
+from core.models import UUIDModel, TimeStampedModel
 
-class Cart(models.Model):
-    id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
+class Cart(UUIDModel, TimeStampedModel):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         related_name="cart",
         on_delete=models.CASCADE
         )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
 
-class CartItem(models.Model):
-    id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
+class CartItem(UUIDModel):
     cart = models.ForeignKey(
         Cart,
         related_name="items",

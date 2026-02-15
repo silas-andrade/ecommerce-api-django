@@ -1,6 +1,6 @@
 from django.db import models
 
-
+from core.models import UUIDModel, TimeStampedModel
 from core import settings
 from .storage import (
     seller_cover_image_path, 
@@ -8,7 +8,7 @@ from .storage import (
     )
 
 
-class Seller(models.Model):
+class Seller(UUIDModel, TimeStampedModel):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
